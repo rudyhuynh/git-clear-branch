@@ -7,5 +7,15 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
-  }
+  },
+  "author": "rudyhuynh <rudyhuynh@>",
+  "keywords": [
+    "git",
+    "branches",
+    "branch",
+    "clear-all",
+    "no-turning-back"
+  ],
+  "repository": "github:rudyhuynh/git-clear-branch",
+  "bugs": "https://github.com/rudyhuynh/git-clear-branch/issues"
 }
