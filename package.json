@@ -1,7 +1,9 @@
 {
   "name": "git-clear-branch",
   "version": "1.0.0",
-  "main": "index.js",
+  "bin": {
+    "git-clear-branch": "main.js"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node index.js"
