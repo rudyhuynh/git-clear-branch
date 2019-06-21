@@ -24,11 +24,13 @@ async function main() {
   console.info(
     `Deleting ${branches.length} local branch${
       branches.length > 1 ? "es" : ""
-    } except 'master'...`
+    } except 'master'...\n`
   );
   await Promise.all(
     branches.map(async branch => {
-      await exec(`git branch -D ${branch}`);
+      const { stdout, stderr } = await exec(`git branch -D ${branch}`);
+      if (stderr) console.error(stderr);
+      console.info(stdout);
     })
   );
 
