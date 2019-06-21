@@ -13,8 +13,7 @@
     "git",
     "branches",
     "branch",
-    "clear-all",
-    "no-turning-back"
+    "clear-all"
   ],
   "repository": "github:rudyhuynh/git-clear-branch",
   "bugs": "https://github.com/rudyhuynh/git-clear-branch/issues"
