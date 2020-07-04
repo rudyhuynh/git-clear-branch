@@ -1,4 +1,4 @@
-To clear all your local branches (except `master`), run below at your git repo:
+To clear all your local branches (except `master` and current branch), run below at your git repo:
 
 ```
 npx git-clear-branch
