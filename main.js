@@ -5,7 +5,7 @@ const { version } = require("./package.json");
 
 async function getCurrentBranch() {
   const { stdout } = await exec("git rev-parse --abbrev-ref HEAD");
-  return stdout.toString();
+  return stdout.toString().trim();
 }
 
 async function main() {
