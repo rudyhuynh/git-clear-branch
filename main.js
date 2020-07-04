@@ -16,7 +16,6 @@ async function main() {
   }
 
   const currentBranch = await getCurrentBranch();
-  console.log("currentBranch", currentBranch);
 
   const branches = stdout
     .toString()
@@ -24,8 +23,6 @@ async function main() {
     .split(/\s/)
     .filter(Boolean)
     .filter((branch) => branch !== "master" && branch !== currentBranch);
-
-  console.log("branches", branches.join(","));
 
   if (branches.length < 1) {
     console.info("No local branch (except master) to be deleted\n");
