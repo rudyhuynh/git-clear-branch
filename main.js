@@ -3,36 +3,36 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const { version } = require("./package.json");
 
+async function getCurrentBranch() {
+  const { stdout } = await exec("git rev-parse --abbrev-ref HEAD");
+  return stdout.toString();
+}
+
 async function main() {
   console.info(`Version: ${version}`);
   const { stdout, stderr } = await exec("git branch");
   if (stderr) {
     return console.error(stderr);
   }
+
+  const currentBranch = await getCurrentBranch();
+
   const branches = stdout
     .toString()
     .replace(/\*/g, "")
     .split(/\s/)
     .filter(Boolean)
-    .filter(branch => branch !== "master");
+    .filter((branch) => branch !== "master" && branch !== currentBranch);
 
   if (branches.length < 1) {
     console.info("No local branch (except master) to be deleted\n");
     return;
   }
   await exec("git checkout master");
-  console.info(
-    `Deleting ${branches.length} local branch${
-      branches.length > 1 ? "es" : ""
-    } except 'master'...\n`
-  );
-  await Promise.all(
-    branches.map(async branch => {
-      const { stdout, stderr } = await exec(`git branch -D ${branch}`);
-      if (stderr) console.error(stderr);
-      console.info(stdout);
-    })
-  );
+
+  const deleteBranchCmd = `git branch -D ${branches.join(" ")}`;
+  console.info(deleteBranchCmd);
+  await exec(deleteBranchCmd);
 
   console.info("\nDONE!");
   console.info("\n> git branch\n");
