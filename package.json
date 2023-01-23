@@ -1,6 +1,6 @@
 {
   "name": "git-clear-branch",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "bin": {
     "git-clear-branch": "main.js"
   },
