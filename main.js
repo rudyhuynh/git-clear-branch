@@ -22,10 +22,15 @@ async function main() {
     .replace(/\*/g, "")
     .split(/\s/)
     .filter(Boolean)
-    .filter((branch) => branch !== "master" && branch !== currentBranch);
+    .filter(
+      (branch) =>
+        branch !== "master" && branch !== "main" && branch !== currentBranch
+    );
 
   if (branches.length < 1) {
-    console.info("No local branch (except master) to be deleted\n");
+    console.info(
+      "No local branch (except `master` and `main`) to be deleted\n"
+    );
     return;
   }
 
