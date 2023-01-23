@@ -34,11 +34,10 @@ async function main() {
     return;
   }
 
-  for (let branch of branches) {
-    const deleteBranchCmd = `git branch -D ${branch}`;
-    console.info(deleteBranchCmd);
-    await exec(deleteBranchCmd);
-  }
+  const deleteBranchCmd = `git branch -D ${branches.join(" ")}`;
+  console.info(deleteBranchCmd);
+  const { stdout: deleteBranchStdout } = await exec(deleteBranchCmd);
+  console.info(deleteBranchStdout);
 
   console.info("\nDONE!");
   console.info("\n> git branch\n");
